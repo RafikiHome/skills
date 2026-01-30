@@ -37,12 +37,11 @@ Constraints from CONTRIBUTING.md:
 - **Consistent terminology** — one term per concept throughout a skill
 - **Symptom-based triggering** — the `description` frontmatter should describe observable agent behaviors that signal the skill is needed
 
-## Installation / Distribution
+## Validation
 
-Skills are distributed two ways from the same repo:
-- **Cross-agent (npx):** `npx skills add homeassistant-ai/skills`
-- **Claude Code plugin:** `claude plugin add homeassistant-ai/skills`
+CI runs `skills-ref validate` on every PR and push to `main` that touches `skills/**`. To validate locally:
 
-## No Build System
-
-This is a pure content repository — no build, lint, test, or CI commands exist. Validation is manual: ensure SKILL.md files meet the format and constraints above.
+```bash
+pip install skills-ref
+python -m skills_ref.cli validate skills/<skill-name>
+```
